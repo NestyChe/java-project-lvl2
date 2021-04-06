@@ -4,6 +4,7 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/6.8.3/samples
  */
+
 plugins {
   id 'com.github.ben-manes.versions' version '0.38.0'
   id 'application'
@@ -24,3 +25,7 @@ repositories {
 group = 'hexlet.code'
 
 version = '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'info.picocli:picocli:4.6.1'
+}
