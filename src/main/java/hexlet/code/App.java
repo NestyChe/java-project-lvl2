@@ -1,22 +1,23 @@
 package hexlet.code;
 
 import picocli.CommandLine;
+
 import static picocli.CommandLine.*;
 import static picocli.CommandLine.Option;
-import java.io.File;
+import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", description = "Compares two configuration files and shows a difference.")
-public class App {
+public final class App implements Callable<String> {
 
-    @Parameters(description = "path to first file", paramLabel = "filepath1")
-    private File file1;
+    @Parameters(index = "0", description = "path to first file")
+    private String filePath1 = "/home/main/java-project-lvl2/first.json";
 
-    @Parameters(description = "path to second file", paramLabel = "filepath2")
-    private File file2;
+    @Parameters(index = "1", description = "path to second file")
+    private String filePath2 = "/home/main/java-project-lvl2/second.json";
 
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    private File format;
+    private String format;
 
     @Option(names = {"-h", "--help"},  usageHelp = true, description = "Show this help message and exit.")
     private boolean printHelp;
@@ -24,7 +25,14 @@ public class App {
     @Option(names = {"-v", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean printVersion;
 
-    public static void main(String[] args) {
-        new CommandLine(new App()).execute(args);
+    public static void main(String[] args) throws Exception {
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
+    }
+
+    @Override
+    public String call() throws Exception {
+        System.out.println(Differ.generate(filePath1, filePath2));
+        return Differ.generate(filePath1, filePath2);
     }
 }
