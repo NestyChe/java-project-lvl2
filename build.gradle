@@ -6,10 +6,10 @@
  */
 
 plugins {
-  id 'com.github.ben-manes.versions' version '0.38.0'
-  id 'application'
-  id 'checkstyle'
-
+    id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'application'
+    id 'checkstyle'
+    id 'jacoco'
 }
 
 group = 'hexlet.code'
@@ -26,15 +26,25 @@ compileJava {
 repositories {
     mavenCentral()
 }
+
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+    dependsOn test
 }
 
 dependencies {
     implementation 'info.picocli:picocli:4.6.1'
     annotationProcessor 'info.picocli:picocli-codegen:4.6.1'
-    //implementation 'com.flipkart.zjsonpatch:zjsonpatch:0.4.10'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+checkstyle {
+    toolVersion '9.0'
 }
