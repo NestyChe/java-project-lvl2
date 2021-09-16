@@ -10,10 +10,10 @@ import java.util.concurrent.Callable;
 public final class App implements Callable<String> {
 
     @Parameters(index = "0", description = "path to first file")
-    private String filePath1 = "/home/main/java-project-lvl2/first.json";
+    private String filePath1;
 
     @Parameters(index = "1", description = "path to second file")
-    private String filePath2 = "/home/main/java-project-lvl2/second.json";
+    private String filePath2;
 
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
@@ -25,7 +25,7 @@ public final class App implements Callable<String> {
     @Option(names = {"-v", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean printVersion;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
