@@ -1,12 +1,14 @@
 package hexlet.code;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+
 
 public class Differ {
 
@@ -23,17 +25,14 @@ public class Differ {
 
     public static String diff(Map<String, Object> first, Map<String, Object> second) {
         Map<String, Object> result = new LinkedHashMap<>();
-        /*LinkedHashMap<String, Object> result = Stream.concat(first.keySet().stream(), second.keySet().stream())
-                .sorted()
-                .collect(Collectors.toCollection());*/
         for (Map.Entry<String, Object> node : first.entrySet()) {
             if (second.containsKey(node.getKey()) && second.get(node.getKey()).equals(node.getValue())) {
-                result.put(node.getKey(), node.getValue());
+                result.put("  " + node.getKey(), node.getValue());
             } else if (second.containsKey(node.getKey()) && !second.get(node.getKey()).equals(node.getValue())) {
                 result.put("- " + node.getKey(), node.getValue());
                 result.put("+ " + node.getKey(), second.get(node.getKey()));
             } else if (!second.containsKey(node.getKey())) {
-                result.put("- " + node.getKey(),  node.getValue());
+                result.put("- " + node.getKey(), node.getValue());
             }
         }
         for (Map.Entry<String, Object> node : second.entrySet()) {
@@ -41,9 +40,34 @@ public class Differ {
                 result.put("+ " + node.getKey(), node.getValue());
             }
         }
-        System.out.println(result);
-        return result.toString();
+        return result.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.comparingInt((String one) -> one.charAt(2))))
+                .collect(LinkedHashMap::new,
+                        (a, e) -> a.put(e.getKey(), e.getValue()),
+                        LinkedHashMap::putAll)
+                .toString().replace("=", ": ");
     }
+
+    /*public static String diff(Map<String, Object> first, Map<String, Object> second) {
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Object> node : first.entrySet()) {
+            if (second.containsKey(node.getKey()) && second.get(node.getKey()).equals(node.getValue())) {
+                result.add(" " + node.getKey() + ": " + node.getValue());
+            } else if (second.containsKey(node.getKey()) && !second.get(node.getKey()).equals(node.getValue())) {
+                result.add("- " + node.getKey() + ": " + node.getValue());
+                result.add("+ " + node.getKey() + ": " + second.get(node.getKey()));
+            } else if (!second.containsKey(node.getKey())) {
+                result.add("- " + node.getKey() + ": " + node.getValue());
+            }
+        }
+        for (Map.Entry<String, Object> node : second.entrySet()) {
+            if (!first.containsKey(node.getKey())) {
+                result.add("+ " + node.getKey() + ": " + node.getValue());
+            }
+        }
+        result.sort(Comparator.comparingInt((String one) -> one.charAt(2)));
+        return result.toString();
+    }*/
 
     public static String generate(String filePath1, String filePath2) throws IOException {
         Map<String, Object> first = readFile(getPath(filePath1));
@@ -51,6 +75,8 @@ public class Differ {
         return "{ " + diff(first, second) + " }";
     }
 }
+
+
 /*public class Differ {
     public static String generate(String filePath1, String filePath2) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper(new JsonFactory());
