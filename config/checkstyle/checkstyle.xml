@@ -43,6 +43,7 @@
         <module name="TypeName"/>
         <module name="AvoidStarImport">
             <property name="allowStaticMemberImports" value="true"/>
+            <property name="allowClassImports" value="true"/>
         </module>
         <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
         <module name="RedundantImport"/>
