@@ -4,19 +4,20 @@ import hexlet.code.formatter.Json;
 import hexlet.code.formatter.Plain;
 import hexlet.code.formatter.Stylish;
 
-import java.util.Map;
+import java.util.StringJoiner;
+import java.util.stream.Collector;
 
 
 public class Formatter {
-    
-    public static String formatter(Map<String, Object> first, Map<String, Object> second, String format) {
+
+    public static Collector<Point, StringJoiner, String> formatter(String format) {
         switch (format) {
             case "json":
-                return Json.makeResponse(first, second);
+                return Json.FORMATTER;
             case "plain":
-                return Plain.makeResponse(first, second);
+                return Plain.FORMATTER;
             default:
-                return Stylish.makeResponse(first, second);
+                return Stylish.FORMATTER;
         }
     }
 }
