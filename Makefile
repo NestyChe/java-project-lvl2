@@ -1,5 +1,5 @@
 install:
-	./gradlew clean install
+	./gradlew clean build
 	./gradlew check
 	./gradlew test
 run-dist:
