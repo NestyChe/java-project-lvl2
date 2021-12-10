@@ -1,0 +1,5 @@
+{"key":"follow","previousValue":false,"lastValue":null,"status":"REMOVED"}
+{"key":"host","previousValue":"hexlet.io","lastValue":"hexlet.io","status":"UNCHANGED"}
+{"key":"proxy","previousValue":"123.234.53.22","lastValue":null,"status":"REMOVED"}
+{"key":"timeout","previousValue":50,"lastValue":20,"status":"CHANGED"}
+{"key":"verbose","previousValue":null,"lastValue":true,"status":"ADDED"}

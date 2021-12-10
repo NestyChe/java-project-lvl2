@@ -1,0 +1,13 @@
+{"key":"chars1","previousValue":["a","b","c"],"lastValue":null,"status":"REMOVED"}
+{"key":"chars2","previousValue":false,"lastValue":true,"status":"CHANGED"}
+{"key":"checked","previousValue":true,"lastValue":true,"status":"UNCHANGED"}
+{"key":"default","previousValue":["value1","value2"],"lastValue":["value1","value2"],"status":"UNCHANGED"}
+{"key":"id","previousValue":null,"lastValue":null,"status":"REMOVED"}
+{"key":"key2","previousValue":"value2","lastValue":"value2","status":"UNCHANGED"}
+{"key":"numbers1","previousValue":[1,2,3,4],"lastValue":[1,2,3,4],"status":"UNCHANGED"}
+{"key":"numbers2","previousValue":[22,33,44,55],"lastValue":99,"status":"CHANGED"}
+{"key":"numbers4","previousValue":[4,5,6],"lastValue":[4,5,6],"status":"UNCHANGED"}
+{"key":"obj1","previousValue":["nestedKey","isNested"],"lastValue":["isNested"],"status":"CHANGED"}
+{"key":"setting1","previousValue":"Another value","lastValue":"Another value","status":"UNCHANGED"}
+{"key":"setting2","previousValue":300,"lastValue":300,"status":"UNCHANGED"}
+{"key":"setting3","previousValue":"none","lastValue":"none","status":"UNCHANGED"}

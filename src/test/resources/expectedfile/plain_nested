@@ -1,0 +1,5 @@
+Property 'chars1' was removed
+Property 'chars2' was updated. From false to true
+Property 'id' was removed
+Property 'numbers2' was updated. From [complex value] to 99
+Property 'obj1' was updated. From [complex value] to [complex value]

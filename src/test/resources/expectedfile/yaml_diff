@@ -1,9 +1,0 @@
-{
-   deliverables: HTML5
- + host: hexlet
-   includes: common.yaml
-   name: HTML5
- - names: args.copycss
- + names: args.css
- - proxy: 123.234.53.22
- }

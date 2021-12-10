@@ -1,0 +1,16 @@
+{ - chars1: [a, b, c]
+- chars2: false
++ chars2: true
+  checked: true
+  default: [value1, value2]
+- id: null
+  key2: value2
+  numbers1: [1, 2, 3, 4]
+- numbers2: [22, 33, 44, 55]
++ numbers2: 99
+  numbers4: [4, 5, 6]
+- obj1: [nestedKey, isNested]
++ obj1: [isNested]
+  setting1: Another value
+  setting2: 300
+  setting3: none }

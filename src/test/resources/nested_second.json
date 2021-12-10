@@ -1,19 +1,14 @@
 {
-  "common": {
-    "follow": false,
-    "setting1": "Value 1",
-    "setting3": null,
-    "setting4": "blah blah",
-    "setting5": {
-      "key5": "value5"
-    },
-    "setting6": {
-      "key": "value",
-      "ops": "vops",
-      "doge": {
-        "wow": "so much"
-      }
-    }
-  }
+  "setting1": "Another value",
+  "setting2": 300,
+  "setting3": "none",
+  "key2": "value2",
+  "numbers1": [1, 2, 3, 4],
+  "numbers2": 99,
+  "default": ["value1", "value2"],
+  "checked": true,
+  "numbers4": [4, 5, 6],
+  "chars2": true,
+  "obj1": ["isNested"]
 }
 
