@@ -1,10 +1,9 @@
 package hexlet.code;
-
 import picocli.CommandLine;
-
+import java.util.concurrent.Callable;
 import static picocli.CommandLine.*;
 import static picocli.CommandLine.Option;
-import java.util.concurrent.Callable;
+
 
 @Command(name = "gendiff", description = "Compares two configuration files and shows a difference.")
 public final class App implements Callable<String> {
