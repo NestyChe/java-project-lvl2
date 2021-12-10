@@ -24,5 +24,4 @@ public class Parser {
         return parse(type).readValue(file, new TypeReference<>() { });
     }
 
-    //public static Path getPath(String filePath) {return Paths.get(filePath).toAbsolutePath();}
 }
