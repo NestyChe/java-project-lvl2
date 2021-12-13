@@ -17,5 +17,5 @@
           CC_TEST_REPORTER_ID: ${{secrets.HEXLET_LVL2_ID}}
           JACOCO_SOURCE_PATH: "/src/main/java"
         with:
-            coverageCommand: make install
-            coverageLocations: /build/reports/jacoco/test/html/jacocoTestReport.xml:jacoco
+          coverageCommand: make install
+          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/html/jacocoTestReport.xml:jacoco
