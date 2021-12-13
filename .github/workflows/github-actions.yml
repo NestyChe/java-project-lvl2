@@ -12,10 +12,10 @@
           distribution: 'adopt'
           java-version: '11'
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.5
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.HEXLET_LVL2_ID}}
-          JACOCO_SOURCE_PATH: "/src/main/java"
+          JACOCO_SOURCE_PATH: src/main/java
         with:
           coverageCommand: make install
-          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/html/jacocoTestReport.xml:jacoco
+          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
