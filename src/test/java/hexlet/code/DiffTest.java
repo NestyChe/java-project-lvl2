@@ -2,8 +2,6 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,8 +29,8 @@ class DiffTest {
         String expectSimple = expected(formatTest + "_simple");
         String expectNested = expected(formatTest + "_nested");
         for (String[] file : files()) {
-            String first = getFile(file[0]);
-            String second = getFile(file[1]);
+            String first = getFile(file[0]).getPath();
+            String second = getFile(file[1]).getPath();
             if (file[0].startsWith("simple")) {
                 assertEquals(expectSimple, Differ.generate(first, second, formatTest));
             } else {
@@ -41,14 +39,14 @@ class DiffTest {
         }
     }
 
-    public static String getFile(String name) {
-        File f = new File(Differ.class.getClassLoader().getResource(name).getFile());
-        return f.getPath();
+    public static File getFile(String name) {
+        return new File(Differ.class.getClassLoader().getResource(name).getFile());
+
     }
 
     public String expected(String name) throws IOException {
-        String path = "/home/main/Nastya/my-projects/java-project-lvl2/src/test/resources/expectedfile/";
-        return Files.newBufferedReader(Paths.get(path + name))
+        String path = "expectedfile/";
+        return new BufferedReader(new FileReader(getFile(path + name)))
                 .lines()
                 .collect(Collectors.joining("\n"));
     }
