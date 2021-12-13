@@ -1,6 +1,7 @@
   name: Java CI
   on:
     - push
+    - pull_request
   jobs:
     build:
       runs-on: ubuntu-latest
@@ -18,4 +19,3 @@
         with:
             coverageCommand: make install
             coverageLocations: /build/reports/jacoco/test/html/jacocoTestReport.xml:jacoco
-            debug: true

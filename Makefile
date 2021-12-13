@@ -1,6 +1,7 @@
 install:
 	./gradlew clean build
-
+	./gradlew check
+	./gradlew test
 run-dist:
 	./build/install/app/bin/app
 
